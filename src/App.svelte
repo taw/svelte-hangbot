@@ -5,14 +5,30 @@
   import {dictionary} from "./dictionary.js";
 
   let lettersChosen = [];
-  let word = randomElement(dictionary);
+  let word = randomDictionaryWord();
   let stage = 0;
   let enabled = true;
 
-  console.log("word is", word);
+  function restart() {
+    lettersChosen = [];
+    word = randomDictionaryWord();
+    stage = 0;
+    enabled = true;
+  }
 
   function randomElement(array) {
     return array[Math.floor(Math.random() * array.length)];
+  }
+
+  // Get another one if word contains numbers or special characters
+  // like $
+  function randomDictionaryWord() {
+    while (true) {
+      let word = randomElement(dictionary);
+      if (!/[^A-Za-z_]/.test(word)) {
+        return word;
+      }
+    }
   }
 
   function badGuess(letter) {
@@ -26,47 +42,43 @@
 
   function onLetter(letter) {
     lettersChosen = [...lettersChosen, letter];
-
     if (badGuess(letter)) {
       stage += 1;
     }
+    // alert is blocking so we need to put it in setTimeout 0
+    // so the page can update what's displayed
     if (isGameWon()) {
-      alert("YOU WON!")
+      setTimeout(() => alert("YOU WON!"), 0)
       enabled = false;
     }
     if (stage == 8) {
-      alert(`GAME LOST! Word was ${word}`);
+      setTimeout(() => alert(`GAME LOST! Word was ${word}`), 0);
       enabled = false
     }
     console.log("letter", stage, lettersChosen);
   }
-
-  function restart() {
-    lettersChosen = [];
-    word = randomElement(dictionary);
-    stage = 0;
-    enabled = true;
-  }
 </script>
 
-<style>
-  header {
-    font-size: 400%;
-  }
-  body {
-    margin: 0 auto;
-  }
-</style>
-
-<header>Hangbot</header>
+<h1>Hangbot</h1>
 
 <RobotGallows stage={stage} />
+
+<h2>Secret word:</h2>
 
 <WordGuessed word={word} lettersChosen={lettersChosen} />
 
 {#if enabled}
+  <h2>Keyboard:</h2>
   <Keyboard lettersChosen={lettersChosen} onLetter={onLetter} />
 {:else}
   <button on:click={restart}>RESTART GAME</button>
 {/if}
 
+<style>
+  h1 {
+    font-size: 400%;
+  }
+  h2 {
+    font-size: 150%;
+  }
+</style>
