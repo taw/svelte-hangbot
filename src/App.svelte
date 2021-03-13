@@ -69,7 +69,6 @@
     onLetter(key)
   }
 </script>
-
 <h1>Hangbot</h1>
 
 <RobotGallows stage={stage} />
@@ -87,11 +86,22 @@
   <button on:click={restart}>RESTART GAME</button>
 {/if}
 
+<footer>Chibi & Taw</footer>
 <style>
   h1 {
     font-size: 400%;
+    font-family: Bradley Hand;
   }
   h2 {
     font-size: 150%;
+  }
+  footer {
+    flex-grow: 1;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 </style>

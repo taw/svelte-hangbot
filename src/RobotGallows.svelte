@@ -20,7 +20,8 @@ Hanging of 🤖 at stage {stage} of 8.
     display: inline-block;
     margin: auto;
     height: 200px;
-    height: 200px;
+    min-height: 200px;
+    width: 200px;
     position: relative;
   }
   .robot {

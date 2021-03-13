@@ -16,13 +16,20 @@
 <style>
 .word {
   display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  line-height: 30px;
+  margin: auto
 }
 .letter {
-  height: 30px;
-  width: 30px;
+  margin: 10px;
+  height: 50px;
+  width: 50px;
   background-color: black;
   color: white;
   border: 1px solid grey;
   text-align: center;
+  line-height: 50px;
 }
 </style>

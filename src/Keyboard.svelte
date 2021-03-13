@@ -7,7 +7,7 @@
   ]
 </script>
 
-<div>
+<div class="keyboard">
   {#each letters as letter}
     {#if lettersChosen.includes(letter)}
       <button disabled>{letter}</button>
@@ -20,5 +20,15 @@
 <style>
   div {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
+  div > * {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 30px;
+    margin: 2px;
+  }
+
 </style>
