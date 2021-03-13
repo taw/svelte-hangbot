@@ -57,6 +57,17 @@
     }
     console.log("letter", stage, lettersChosen);
   }
+
+  function handleKeydown(event) {
+    let key = event.key.toUpperCase();
+    if (!/^[A-Z_]$/.test(key)) {
+      return // not A-Z or _
+    }
+    if (lettersChosen.includes(key)) {
+      return // already chosen this letter, so ignore it
+    }
+    onLetter(key)
+  }
 </script>
 
 <h1>Hangbot</h1>
@@ -66,6 +77,8 @@
 <h2>Secret word:</h2>
 
 <WordGuessed word={word} lettersChosen={lettersChosen} />
+
+<svelte:window on:keydown={handleKeydown}/>
 
 {#if enabled}
   <h2>Keyboard:</h2>
