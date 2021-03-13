@@ -15,12 +15,14 @@
 
 <style>
 .word {
+  font-size: 30px;
   display: flex;
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
   line-height: 30px;
-  margin: auto
+  margin: auto;
+  max-width: 80vw;
 }
 .letter {
   margin: 10px;

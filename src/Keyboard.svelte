@@ -19,16 +19,20 @@
 
 <style>
   div {
+    font-size: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    margin: auto;
+    max-width: 80vw;
   }
   div > * {
+    font-size: inherit;
     height: 50px;
     width: 50px;
     text-align: center;
     line-height: 30px;
-    margin: 2px;
+    margin: 10px;
   }
 
 </style>

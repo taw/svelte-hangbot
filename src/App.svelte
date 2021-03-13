@@ -79,11 +79,11 @@
 
 <svelte:window on:keydown={handleKeydown}/>
 
-{#if enabled}
+{#if enabled }
   <h2>Keyboard:</h2>
   <Keyboard lettersChosen={lettersChosen} onLetter={onLetter} />
 {:else}
-  <button on:click={restart}>RESTART GAME</button>
+  <button class="restart" on:click={restart}>RESTART GAME</button>
 {/if}
 
 <footer>Chibi & Taw</footer>
@@ -103,5 +103,15 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+  }
+  .restart{
+    flex: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: green;
+    color: white;
+    margin: auto;
+    padding: 5px;
   }
 </style>
